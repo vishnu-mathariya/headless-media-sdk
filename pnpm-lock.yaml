@@ -80,9 +80,25 @@ importers:
 
   packages/media-ui-react:
     dependencies:
+      '@media-sdk/core':
+        specifier: workspace:*
+        version: link:../media-core
+      '@media-sdk/react':
+        specifier: workspace:*
+        version: link:../media-react
       react:
         specifier: ^18.0.0 || ^19.0.0
         version: 19.2.8
+    devDependencies:
+      '@types/react':
+        specifier: ^19.2.18
+        version: 19.2.18
+      '@types/react-dom':
+        specifier: ^19.2.4
+        version: 19.2.4(@types/react@19.2.18)
+      typescript:
+        specifier: ^7.0.2
+        version: 7.0.2
 
 packages:
 

@@ -1,7 +1,7 @@
 {
   "name": "@media-sdk/ui-react",
   "version": "1.0.0",
-  "description": "Headless React UI components for the Media SDK",
+  "description": "Reusable React UI components for Media SDK",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
@@ -18,9 +18,16 @@
   "peerDependencies": {
     "react": "^18.0.0 || ^19.0.0"
   },
+  "dependencies": {
+    "@media-sdk/core": "workspace:*",
+    "@media-sdk/react": "workspace:*"
+  },
   "scripts": {
-    "build": "tsc",
-    "test": "vitest run",
-    "lint": "eslint ."
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4",
+    "typescript": "^7.0.2"
   }
 }
