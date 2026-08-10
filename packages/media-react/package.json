@@ -25,5 +25,10 @@
     "build": "tsc",
     "test": "vitest run",
     "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "typescript": "^7.0.2",
+    "vitest": "^4.1.10"
   }
 }
