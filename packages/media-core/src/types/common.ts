@@ -11,3 +11,12 @@ export interface PaginationMeta {
   totalResults?: number;
   hasNextPage: boolean;
 }
+
+export interface MediaQuery extends PaginationParams {
+  query: string;
+}
+
+export interface MediaListResult<T> {
+  items: T[];
+  pagination: PaginationMeta;
+}

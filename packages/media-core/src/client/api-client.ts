@@ -3,6 +3,8 @@ import {
   PEXELS_ENDPOINTS
 } from "./endpoints";
 
+import { MediaSdkError } from "../errors/errors";
+
 import type {
   PexelsPhotoResponse,
   PexelsVideoResponse
@@ -24,7 +26,10 @@ export class PexelsApiClient {
 
   constructor(options: PexelsClientOptions) {
     if (!options.apiKey?.trim()) {
-      throw new Error("Pexels API key is required.");
+      throw new MediaSdkError(
+        "Pexels API key is required.",
+        "AUTH_ERROR"
+      );
     }
 
     this.apiKey = options.apiKey;
@@ -41,11 +46,20 @@ export class PexelsApiClient {
       url.searchParams.set(key, String(value));
     });
 
-    const response = await fetch(url, {
-      headers: {
-        Authorization: this.apiKey
-      }
-    });
+    let response: Response;
+
+    try {
+      response = await fetch(url, {
+        headers: {
+          Authorization: this.apiKey
+        }
+      });
+    } catch {
+      throw new MediaSdkError(
+        "Unable to connect to the Pexels API.",
+        "NETWORK_ERROR"
+      );
+    }
 
     if (!response.ok) {
       let message = `Pexels API request failed with status ${response.status}.`;
@@ -59,13 +73,27 @@ export class PexelsApiClient {
           message = errorBody.error;
         }
       } catch {
-        // Keep default error message.
+        // Keep the default error message.
       }
 
-      throw new Error(message);
+      throw new MediaSdkError(
+        message,
+        response.status === 401
+          ? "AUTH_ERROR"
+          : "API_ERROR",
+        response.status
+      );
     }
 
-    return response.json() as Promise<T>;
+    try {
+      return (await response.json()) as T;
+    } catch {
+      throw new MediaSdkError(
+        "Invalid response received from the Pexels API.",
+        "API_ERROR",
+        response.status
+      );
+    }
   }
 
   async searchPhotos(
