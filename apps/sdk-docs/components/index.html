@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Media SDK Components</title>
+  </head>
+  <body>
+    <main>
+      <h1>Media SDK Components</h1>
+
+      <h2>Overview</h2>
+      <p>
+        The Media SDK provides reusable React UI components for building media
+        browsing experiences.
+      </p>
+
+      <h2>MediaCard</h2>
+      <p>Displays an individual media item with its image and metadata.</p>
+      <ul>
+        <li>Media preview</li>
+        <li>Accessible image alt text</li>
+        <li>Media metadata</li>
+        <li>View interaction</li>
+        <li>Download interaction</li>
+      </ul>
+
+      <h2>MediaGrid</h2>
+      <p>Displays media items in a responsive grid layout.</p>
+      <ul>
+        <li>Responsive layout</li>
+        <li>Reusable MediaCard components</li>
+        <li>Mobile, tablet, and desktop support</li>
+        <li>Efficient rendering</li>
+      </ul>
+
+      <h2>Search</h2>
+      <p>Provides a search interface for discovering media.</p>
+      <ul>
+        <li>Search input</li>
+        <li>Search submission</li>
+        <li>Loading state</li>
+        <li>Error state</li>
+        <li>Empty state</li>
+        <li>Pagination / load more</li>
+      </ul>
+
+      <h2>Loading State</h2>
+      <p>
+        Components provide visible loading feedback while media requests are in
+        progress.
+      </p>
+
+      <h2>Error State</h2>
+      <p>
+        Components display understandable error messages and provide retry
+        actions when appropriate.
+      </p>
+
+      <h2>Empty State</h2>
+      <p>
+        When no media is available, components display a clear empty-results
+        message instead of an empty grid.
+      </p>
+
+      <h2>Accessibility</h2>
+      <ul>
+        <li>Semantic HTML</li>
+        <li>Accessible labels</li>
+        <li>Meaningful image alt text</li>
+        <li>Keyboard-accessible controls</li>
+        <li>Visible focus states</li>
+      </ul>
+
+      <h2>Responsive Design</h2>
+      <p>Components support desktop, tablet, and mobile layouts.</p>
+
+      <h2>Architecture</h2>
+      <pre>
+Application
+    |
+    +-- @media-sdk/react
+    |
+    +-- @media-sdk/ui-react
+              |
+              +-- MediaCard
+              +-- MediaGrid
+              +-- Search UI
+    </pre
+      >
+
+      <p>
+        UI components are responsible for presentation and interaction. API
+        communication remains inside the SDK layer.
+      </p>
+    </main>
+  </body>
+</html>
