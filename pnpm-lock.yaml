@@ -8,6 +8,8 @@ importers:
 
   .: {}
 
+  apps/sdk-docs: {}
+
   apps/web:
     dependencies:
       '@media-sdk/core':
